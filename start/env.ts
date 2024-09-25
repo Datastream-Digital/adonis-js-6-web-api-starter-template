@@ -18,12 +18,18 @@ export default await Env.create(new URL('../', import.meta.url), {
   HOST: Env.schema.string({ format: 'host' }),
   LOG_LEVEL: Env.schema.enum(['fatal', 'error', 'warn', 'info', 'debug', 'trace']),
 
+  TESTCONTAINERS_ENABLED: Env.schema.boolean(),
+
+  SEQ_LOGGING_ENABLED: Env.schema.boolean(),
+  SEQ_SERVER_HOST: Env.schema.string(),
+  SEQ_SERVER_PORT: Env.schema.number(),
+
   /*
   |----------------------------------------------------------
   | Variables for configuring database connection
   |----------------------------------------------------------
   */
-  DB_HOST: Env.schema.string({ format: 'host' }),
+  DB_HOST: Env.schema.string(),
   DB_PORT: Env.schema.number(),
   DB_USER: Env.schema.string(),
   DB_PASSWORD: Env.schema.string.optional(),

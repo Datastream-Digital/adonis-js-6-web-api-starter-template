@@ -1,6 +1,6 @@
 import env from '#start/env'
-import app from '@adonisjs/core/services/app'
 import { defineConfig, targets } from '@adonisjs/core/logger'
+import app from '@adonisjs/core/services/app'
 
 const loggerConfig = defineConfig({
   default: 'app',
@@ -17,6 +17,14 @@ const loggerConfig = defineConfig({
       transport: {
         targets: targets()
           .pushIf(!app.inProduction, targets.pretty())
+          .pushIf(env.get('SEQ_LOGGING_ENABLED', false), {
+            target: '@autotelic/pino-seq-transport',
+            options: {
+              loggerOpts: {
+                serverUrl: `${env.get('SEQ_SERVER_HOST')}:${env.get('SEQ_SERVER_PORT')}`,
+              },
+            },
+          })
           .pushIf(app.inProduction, targets.file({ destination: 1 }))
           .toArray(),
       },

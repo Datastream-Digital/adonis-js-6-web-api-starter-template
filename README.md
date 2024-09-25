@@ -1,5 +1,19 @@
 # Adonisjs 6 Web API Starter Template
 
-- Which starter kit would you like to use · API Starter Kit
-- Which authentication guard you want to use · skip
-- Which database driver you want to use · postgres
+# Run docker for Production
+
+1. Copy `.env.prod.example` file value to `.env` file
+2. Build and start docker
+
+```bash
+npm run docker-compose-up:prod
+```
+
+> **Note:** this will start docker for application server and postgres database
+
+3. Perform database migration and seeding (inside docker terminal)
+
+```bash
+npm run database:migrate-and-seed
+```
+

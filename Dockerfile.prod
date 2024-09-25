@@ -1,31 +1,36 @@
+# Use build argument for Node image version
 ARG NODE_IMAGE=public.ecr.aws/docker/library/node:22-alpine
-FROM $NODE_IMAGE AS base
 
-# All deps stage
-FROM base AS deps
-WORKDIR /app
+# Base stage for setting up the environment
+FROM $NODE_IMAGE AS base
+WORKDIR /monorepo
 ADD package.json package-lock.json ./
+ADD apps/adonis-js-template/package.json ./apps/adonis-js-template/
+ADD packages/utilities/package.json ./packages/utilities/
+
+# Stage for installing all dependencies (including dev dependencies)
+FROM base AS deps
+ADD install.js ./
 RUN npm ci
 
-# Production only deps stage
+# Stage for installing production dependencies only
 FROM base AS production-deps
-WORKDIR /app
-ADD package.json package-lock.json ./
+ADD install.js ./
 RUN npm ci --omit=dev
 
 # Build stage
 FROM base AS build
-WORKDIR /app
-COPY --from=deps /app/node_modules /app/node_modules
+COPY --from=deps /monorepo/node_modules /monorepo/node_modules
 ADD . .
+WORKDIR /monorepo/apps/adonis-js-template
 RUN node ace build
 
-# Production stage
+# Final production stage
 FROM base
 ENV NODE_ENV=production
 ENV HOST=0.0.0.0
-WORKDIR /app
-COPY --from=production-deps /app/node_modules /node_modules
-COPY --from=build /app/build /build
+WORKDIR /monorepo
+COPY --from=production-deps /monorepo/node_modules /node_modules
+COPY --from=build /monorepo/apps/adonis-js-template/build /build
 EXPOSE 8080
 CMD ["node", "../build/bin/server.js"]
