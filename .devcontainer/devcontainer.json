@@ -1,0 +1,45 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
+{
+  "name": "Adonis JS 6 Web API Starter Template",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "devcontainer",
+  "workspaceFolder": "/workspace",
+
+  "postCreateCommand": "npm install",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        // docker and devcontainer
+        "ms-vscode-remote.remote-containers",
+        "ms-azuretools.vscode-docker",
+
+        // tooling
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "VASubasRaj.flashpost",
+        "streetsidesoftware.code-spell-checker",
+        "usernamehw.errorlens",
+        "vitest.explorer",
+
+        // git
+        "seatonjiang.gitmoji-vscode",
+        "eamodio.gitlens",
+        "mhutchie.git-graph",
+        "donjayamanne.githistory",
+
+        // dx
+        "xabikos.JavaScriptSnippets",
+        "albert.TabOut",
+
+        // adonis official extension
+        "jripouteau.adonis-vscode-extension",
+        "jripouteau.japa-vscode",
+        "adonisjs.vscode-edge"
+      ]
+    }
+  },
+
+  "remoteUser": "root"
+}

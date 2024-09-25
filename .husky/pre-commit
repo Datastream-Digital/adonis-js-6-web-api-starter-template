@@ -1,0 +1,14 @@
+TEMP_FILE=$(mktemp)
+
+# Run your pre-commit commands and capture output
+echo "Running pre-commit checks..." | tee $TEMP_FILE
+
+echo "Checking using lint-stage..." >> $TEMP_FILE
+if npx lint-staged --allow-empty >> $TEMP_FILE 2>&1; then
+  echo "Lint-staged check succeeded." >> $TEMP_FILE
+  exit 0
+else
+  echo "Failed." | tee -a $TEMP_FILE
+  code $TEMP_FILE
+  exit 1
+fi

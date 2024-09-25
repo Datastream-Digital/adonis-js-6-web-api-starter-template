@@ -8,9 +8,15 @@
 */
 
 import router from '@adonisjs/core/services/router'
+import { registerDevelopmentRoutes } from './routes/development.js'
+import { registerSwaggerRoutes } from './routes/swagger.js'
 
-router.get('/', async () => {
-  return {
-    hello: 'world',
-  }
-})
+router.on('/').redirect('/api/swagger/docs')
+
+router
+  .group(() => {
+    registerSwaggerRoutes(router)
+    registerDevelopmentRoutes(router)
+  })
+  .prefix('api')
+  .as('api')

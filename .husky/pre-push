@@ -1,0 +1,16 @@
+TEMP_FILE=$(mktemp)
+
+# Run your pre-commit commands and capture output
+echo "1. Running pre-push checks..." | tee $TEMP_FILE
+
+# Run typecheck command and capture output
+echo "3. Checking typecheck..." >> $TEMP_FILE
+if npm run typecheck >> $TEMP_FILE 2>&1; then
+  echo "Typecheck succeeded." >> $TEMP_FILE
+else
+  echo "Typecheck failed." | tee -a $TEMP_FILE
+  code $TEMP_FILE
+  exit 1
+fi
+
+exit 0

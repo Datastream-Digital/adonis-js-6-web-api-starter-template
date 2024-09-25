@@ -4,15 +4,20 @@
 
   // List of extensions which should be recommended for users of this workspace.
   "recommendations": [
+    // docker and devcontainer
+    "ms-vscode-remote.remote-containers",
+    "ms-azuretools.vscode-docker",
+
     // tooling
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "VASubasRaj.flashpost",
     "streetsidesoftware.code-spell-checker",
     "usernamehw.errorlens",
-    "jamesinaxx.sort-package",
+    "vitest.explorer",
 
     // git
+    "seatonjiang.gitmoji-vscode",
     "eamodio.gitlens",
     "mhutchie.git-graph",
     "donjayamanne.githistory",
