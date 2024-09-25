@@ -4,7 +4,7 @@ services:
   app:
     build:
       context: ../..
-      dockerfile: apss/adonis-js-template/Dockerfile.prod
+      dockerfile: apps/adonis-js-template/Dockerfile.prod
     restart: always
     working_dir: /monorepo
     volumes:
