@@ -6,7 +6,7 @@
   "configurations": [
     {
       "type": "node-terminal",
-      "name": "debug-dev:dunning-service",
+      "name": "debug: dev",
       "request": "launch",
       "command": "npm run dev",
       "cwd": "${workspaceFolder}"
