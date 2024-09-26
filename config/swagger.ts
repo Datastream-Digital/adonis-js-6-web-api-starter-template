@@ -9,7 +9,7 @@ export default {
   info: {
     title: '{{ project_name_for_human }} API',
     version: '1.0.0',
-    description: 'API documentation for {{ project_name_for_human }} Service',
+    description: 'API documentation for {{ project_name_for_human }}',
   },
   snakeCase: true,
   debug: false,
