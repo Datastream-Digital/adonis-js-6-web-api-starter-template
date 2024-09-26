@@ -2,7 +2,7 @@
 
 # Run docker for Production
 
-1. Copy `.env.prod.example` file value to `.env` file
+1. Copy [.env.prod.example](./.env.prod.example) file value to [.env](./.env) file
 2. Build and start docker
 
 ```bash
