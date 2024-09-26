@@ -1,4 +1,4 @@
-# Adonisjs 6 Web API Starter Template
+# {{ project_name_for_human }}
 
 # Run docker for Production
 
@@ -16,4 +16,3 @@ npm run docker-compose-up:prod
 ```bash
 npm run database:migrate-and-seed
 ```
-

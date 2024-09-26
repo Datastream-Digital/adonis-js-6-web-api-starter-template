@@ -1,5 +1,5 @@
 {
-  "name": "@crm/adonis-js-template",
+  "name": "@crm/{{ project-name }}",
   "version": "1.0.0",
   "private": true,
   "license": "UNLICENSED",

@@ -3,13 +3,13 @@ import url from 'node:url'
 
 export default {
   path: path.dirname(url.fileURLToPath(import.meta.url)) + '/../',
-  title: 'Adonis JS Starter Template Web API',
+  title: '{{ project_name_for_human }} API',
   version: '1.0.0',
   tagIndex: 2,
   info: {
-    title: 'Adonis JS Starter Template Web API',
+    title: '{{ project_name_for_human }} API',
     version: '1.0.0',
-    description: 'API documentation for CRM Dunning Service',
+    description: 'API documentation for {{ project_name_for_human }} Service',
   },
   snakeCase: true,
   debug: false,

@@ -8,7 +8,7 @@ ADD . .
 FROM base AS build
 WORKDIR /monorepo
 RUN npm ci
-RUN npm run build -w @crm/adonis-js-template-service
+RUN npm run build -w @crm/{{ project_name }}-service
 RUN npm prune
 
 # Final production stage
@@ -17,6 +17,6 @@ ENV NODE_ENV=production
 ENV HOST=0.0.0.0
 WORKDIR /monorepo
 COPY --from=build /monorepo/node_modules /node_modules
-COPY --from=build /monorepo/apps/adonis-js-template-service/build /build
+COPY --from=build /monorepo/apps/{{ project_name }}-service/build /build
 EXPOSE 8080
 CMD ["node", "../build/bin/server.js"]

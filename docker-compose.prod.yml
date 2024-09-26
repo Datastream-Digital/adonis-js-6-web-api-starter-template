@@ -1,10 +1,10 @@
-name: adonis-js-template-production
+name: {{ project_name }}-production
 
 services:
   app:
     build:
       context: ../..
-      dockerfile: apps/adonis-js-template/Dockerfile.prod
+      dockerfile: apps/{{ project_name }}/Dockerfile.prod
     restart: always
     working_dir: /monorepo
     volumes:
