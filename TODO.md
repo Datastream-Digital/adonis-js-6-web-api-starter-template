@@ -1,4 +1,6 @@
 # Checklist
+> **⚠️ Reminder**
+> Please delete this file after completing the check list
 
 ## Replace placeholder text on the following files:
 - [.env.dev.example](./.env.dev.example)
