@@ -8,3 +8,8 @@
 - [package.json](./package.json)
 - [README.md](./README.md)
 - [swagger.ts](./config//swagger.ts)
+
+## Placeholders
+- {{ database_name }}
+- {{ project_name }}
+- {{ project_name_for_human }}
