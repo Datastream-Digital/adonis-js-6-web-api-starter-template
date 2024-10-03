@@ -29,7 +29,7 @@
     "dev": "node ace serve --hmr",
     "docker-compose-up:prod": "npm run typecheck && docker compose -f docker-compose.prod.yml build --no-cache && docker compose -f docker-compose.prod.yml up --build",
     "format": "prettier --write .",
-    "lint": "eslint .",
+    "lint": "eslint . --fix",
     "migration:fresh--seed": "node ace migration:fresh --seed",
     "start": "node bin/server.js",
     "test": "npm run test:vitest && npm run test:japa",
