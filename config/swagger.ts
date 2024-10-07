@@ -13,7 +13,7 @@ export default {
   },
   snakeCase: true,
   debug: false,
-  ignore: ['/', '/api/swagger', '/api/swagger/docs'],
+  ignore: ['/', '/swagger', '/swagger/docs'],
   preferredPutPatch: 'PUT',
   common: {
     parameters: {},
