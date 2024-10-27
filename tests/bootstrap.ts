@@ -1,5 +1,6 @@
 import app from '@adonisjs/core/services/app'
 import testUtils from '@adonisjs/core/services/test_utils'
+import { common } from '@crm/common/tests/plugins'
 import { apiClient } from '@japa/api-client'
 import { assert } from '@japa/assert'
 import { fileSystem } from '@japa/file-system'
@@ -19,6 +20,7 @@ export const plugins: Config['plugins'] = [
   apiClient(),
   pluginAdonisJS(app),
   fileSystem({ basePath: new URL('../tmp/test', import.meta.url), autoClean: true }),
+  common(),
 ]
 
 /**
