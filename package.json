@@ -51,6 +51,7 @@
     "@crm/utilities": "file:../../packages/utilities",
     "@vinejs/vine": "^2.1.0",
     "adonis-autoswagger": "^3.63.0",
+    "adonis-lucid-soft-deletes": "^2.1.0",
     "luxon": "^3.5.0",
     "pg": "^8.12.0",
     "reflect-metadata": "^0.2.2"
