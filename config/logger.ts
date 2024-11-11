@@ -1,35 +1,13 @@
 import env from '#start/env'
-import { defineConfig, targets } from '@adonisjs/core/logger'
-import app from '@adonisjs/core/services/app'
+import { loggerConfigFactory } from '@crm/common/config/logger'
 
-const loggerConfig = defineConfig({
-  default: 'app',
-
-  /**
-   * The loggers object can be used to define multiple loggers.
-   * By default, we configure only one logger (named "app").
-   */
-  loggers: {
-    app: {
-      enabled: true,
-      name: env.get('APP_NAME'),
-      level: env.get('LOG_LEVEL'),
-      transport: {
-        targets: targets()
-          .pushIf(!app.inProduction, targets.pretty())
-          .pushIf(env.get('SEQ_LOGGING_ENABLED', false), {
-            target: '@autotelic/pino-seq-transport',
-            options: {
-              loggerOpts: {
-                serverUrl: `${env.get('SEQ_SERVER_HOST')}:${env.get('SEQ_SERVER_PORT')}`,
-              },
-            },
-          })
-          .pushIf(app.inProduction, targets.file({ destination: 1 }))
-          .toArray(),
-      },
-    },
-  },
+const loggerConfig = loggerConfigFactory({
+  name: env.get('APP_NAME'),
+  level: env.get('LOG_LEVEL'),
+  testLoggingEnabled: env.get('TEST_LOGGING_ENABLED', false),
+  seqLoggingEnabled: env.get('SEQ_LOGGING_ENABLED', false),
+  seqServerHost: env.get('SEQ_SERVER_HOST'),
+  seqServerPort: env.get('SEQ_SERVER_PORT'),
 })
 
 export default loggerConfig
