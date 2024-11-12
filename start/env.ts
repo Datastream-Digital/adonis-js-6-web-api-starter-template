@@ -22,6 +22,7 @@ export default await Env.create(new URL('../', import.meta.url), {
 
   TESTCONTAINERS_ENABLED: Env.schema.boolean(),
 
+  TEST_LOGGING_ENABLED: Env.schema.boolean.optional(),
   SEQ_LOGGING_ENABLED: Env.schema.boolean(),
   SEQ_SERVER_HOST: Env.schema.string(),
   SEQ_SERVER_PORT: Env.schema.number(),
