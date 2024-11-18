@@ -8,9 +8,8 @@
 */
 
 import router from '@adonisjs/core/services/router'
-import { registerDevelopmentRoutes } from './routes/development.js'
 
 router.on('/').redirect('/swagger/docs')
+router.get('/health', [() => import('#controllers/health_checks_controller')])
 
 router.registerSwaggerRoutes()
-registerDevelopmentRoutes(router)
